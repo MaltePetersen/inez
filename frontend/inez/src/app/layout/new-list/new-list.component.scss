@@ -1,0 +1,36 @@
+.flexbox-center{
+    display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .form-align{
+    display: inline-block;
+    text-align: center;
+  }
+  .flexbox-forms{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;   
+  }
+  .example-form {
+      padding-top: 2%;
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    .example-full-width {
+      width: 100%;
+    }
+    .example-icon {
+      padding: 0 14px;
+    }
+    
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+    table {
+      width: 100%;
+    }

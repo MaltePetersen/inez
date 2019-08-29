@@ -1,0 +1,48 @@
+<h2 class="text-muted">Einkaufliste </h2>
+
+
+<div class="flexbox-forms" >
+
+<form class=" form-align"  [formGroup]="checkoutForm" (ngSubmit)="load(checkoutForm.value); checkoutForm.reset()">
+      <label for="email">
+Lade alle Einkaufslisten    </label>
+    <input id="email" type="text" formControlName="email">
+    <button type="submit"  class="btn ml-1 btn-default">Load</button>
+
+  </form>
+
+</div>
+<div class="flexbox-forms" >
+  <button *ngFor='let list of listsEmail; index as i' (click)="loadSpecificList(list)"  class="btn ml-1 btn-default">{{i +1}}</button>
+</div>
+
+<div class="flexbox-center"> 
+
+  <table  mat-table [dataSource]="einkaufsliste.einkaufsItemDTOList"> 
+        <!-- Name Column -->
+        <ng-container matColumnDef="oberkat">
+          <th mat-header-cell *matHeaderCellDef> Produkt </th>
+          <td mat-cell *matCellDef="let element"> {{element.produktDTO.oberKat}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="stdMenge">
+          <th mat-header-cell *matHeaderCellDef> Menge </th>
+          <td mat-cell *matCellDef="let element">  {{element.amount * element.produktDTO.stdMenge}}</td>
+        </ng-container>
+        <ng-container matColumnDef="einheit">
+            <th mat-header-cell *matHeaderCellDef> Einheit </th>
+            <td mat-cell *matCellDef="let element"> {{element.produktDTO.einheit}} </td>
+          </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="beispiel">
+          <th mat-header-cell *matHeaderCellDef> Beispiel </th>
+          <td mat-cell *matCellDef="let element"> {{element.produktDTO.beispielProd}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

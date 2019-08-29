@@ -1,0 +1,53 @@
+<h2 class="text-muted">Einkaufliste </h2>
+
+
+<div class="flexbox-forms" >
+  <form class=" form-align"  #form>
+    <label>Nächsten Artikel bitte eingeben: 
+  <input #box  (keyup.enter)="onEnter(box.value); form.reset()" />
+  </label>
+</form>
+
+<form class=" form-align"  [formGroup]="safeForm" (ngSubmit)="save(safeForm.value); safeForm.reset()">
+      <label for="email">
+      Liste speichern für Email 
+    </label>
+    <input id="email" type="text" formControlName="email">
+    <button type="submit" class="btn ml-1 btn-default">Save</button>
+
+  </form>
+
+  <button  class="btn ml-1 btn-danger" (click)='clear()' >Clear list</button>
+
+</div>
+
+<div class="flexbox-center"> 
+
+  <table mat-table [dataSource]="einkaufsliste.einkaufsItemDTOList"> 
+        <!-- Name Column -->
+        <ng-container matColumnDef="oberkat">
+          <th mat-header-cell *matHeaderCellDef> Produkt </th>
+          <td mat-cell *matCellDef="let element"> {{element.produktDTO.oberKat}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="stdMenge">
+          <th mat-header-cell *matHeaderCellDef> Menge </th>
+          <td mat-cell *matCellDef="let element">  {{ element.produktDTO.stdMenge * element.amount}}</td>
+        </ng-container>
+        <ng-container matColumnDef="einheit">
+            <th mat-header-cell *matHeaderCellDef> Einheit </th>
+            <td mat-cell *matCellDef="let element"> {{element.produktDTO.einheit}} </td>
+          </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="beispiel">
+          <th mat-header-cell *matHeaderCellDef> Beispiel </th>
+          <td mat-cell *matCellDef="let element"> {{element.produktDTO.beispielProd}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
