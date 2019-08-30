@@ -16,11 +16,11 @@ export class ProduktDTO {
     }
 }
 
-export interface EinkaufsItemDTOList {
+export interface PurchaseItemDTOList {
     produktDTO: ProduktDTO;
     amount: number;
 }
-export class EinkaufsItemDTOList {
+export class PurchaseItemDTOList {
     produktDTO: ProduktDTO;
     amount: number;
     constructor(productDto: ProduktDTO, amount: number) {
@@ -29,16 +29,16 @@ export class EinkaufsItemDTOList {
     }
 }
 
-export interface EinkaufsList {
+export interface PurchaseListDTO {
     email: string;
-    einkaufsItemDTOList: EinkaufsItemDTOList[];
+    purchaseItemDTOList: PurchaseItemDTOList[];
 }
-export class EinkaufsList {
+export class PurchaseListDTO {
     email: string;
-    einkaufsItemDTOList: EinkaufsItemDTOList[];
-    constructor(email: string, einkaufsItemDTOList){
+    purchaseItemDTOList: PurchaseItemDTOList[];
+    constructor(email: string, purchaseItemDTOList){
         this.email = email; 
-        this.einkaufsItemDTOList = einkaufsItemDTOList;
+        this.purchaseItemDTOList = purchaseItemDTOList;
     }
 }
 

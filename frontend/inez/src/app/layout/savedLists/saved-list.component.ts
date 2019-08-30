@@ -1,7 +1,7 @@
 import { Component, OnInit,  ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { EinkaufsList, ProduktDTO, EinkaufsItemDTOList } from '../../domain/namespace';
+import { PurchaseListDTO, ProduktDTO, PurchaseItemDTOList } from '../../domain/namespace';
 import { FormBuilder } from '@angular/forms';
 import { MatTable } from '@angular/material';
 @Component({
@@ -17,21 +17,21 @@ export class SavedListComponent implements OnInit {
         });
       }
       displayedColumns: string[] = ['oberkat', 'stdMenge', 'einheit', 'beispiel'];
-      einkaufsliste: EinkaufsList = new EinkaufsList(null, new Array<EinkaufsItemDTOList>());
+      purchaseListDTO: PurchaseListDTO = new PurchaseListDTO(null, new Array<PurchaseItemDTOList>());
       checkoutForm;
-      listsEmail: Array<EinkaufsList>;
+      listsEmail: Array<PurchaseListDTO>;
 
     
     
-      viewItem: EinkaufsItemDTOList;
+      viewItem: PurchaseItemDTOList;
       @ViewChild(MatTable, { static: true }) table: MatTable<any>;
       ngOnInit() {
-        this.einkaufsliste = new EinkaufsList('', new Array<EinkaufsItemDTOList>()); 
+        this.purchaseListDTO = new PurchaseListDTO('', new Array<PurchaseItemDTOList>()); 
         this.getEinkaufslist();
       }
     
       getEinkaufslist() {
-        this.http.get<EinkaufsList>(environment.apiUrl + "/api/zettel/item/malte.petersen@frs.de").subscribe((data) => console.log(data));
+        this.http.get<PurchaseListDTO>(environment.apiUrl + "/api/zettel/item/malte.petersen@frs.de").subscribe((data) => console.log(data));
       }
       onEnter(value: string) {
         let amount = parseInt(value.replace(/\D+/g, ''), 10);
@@ -40,28 +40,28 @@ export class SavedListComponent implements OnInit {
         }
         this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((oberKat) => {
         console.log(amount);
-        if(this.einkaufsliste.einkaufsItemDTOList.filter((data) => data.produktDTO.id === oberKat.id).length !== 0){
-          this.einkaufsliste.einkaufsItemDTOList.map((data) => {
+        if(this.purchaseListDTO.purchaseItemDTOList.filter((data) => data.produktDTO.id === oberKat.id).length !== 0){
+          this.purchaseListDTO.purchaseItemDTOList.map((data) => {
             if(data.produktDTO.id === oberKat.id){
               data.amount = amount + data.amount;
           }});
         } else {
-          this.einkaufsliste.einkaufsItemDTOList.push(new EinkaufsItemDTOList(oberKat, amount));
+          this.purchaseListDTO.purchaseItemDTOList.push(new PurchaseItemDTOList(oberKat, amount));
         }
           this.table.renderRows();
         });
     
       }
       load(formData : any) {
-            this.http.get<Array<EinkaufsList>>(environment.apiUrl + '/api/zettel/items/' + formData.email).subscribe((data) => {
+            this.http.get<Array<PurchaseListDTO>>(environment.apiUrl + '/api/zettel/items/' + formData.email).subscribe((data) => {
               console.log(data);
               this.listsEmail = data;
-              this.einkaufsliste = this.listsEmail[0];
+              this.purchaseListDTO = this.listsEmail[0];
             this.table.renderRows();
             });
       }
-      loadSpecificList(einkaufsliste: EinkaufsList){
-        this.einkaufsliste = einkaufsliste;
+      loadSpecificList(purchaseListDTO: PurchaseListDTO){
+        this.purchaseListDTO = purchaseListDTO;
         this.table.renderRows();
       }
     }
