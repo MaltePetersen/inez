@@ -6,6 +6,8 @@ import { FormBuilder } from '@angular/forms';
 import { MatTable } from '@angular/material';
 import { empty, Observable, of } from 'rxjs';
 import { SourceListMap } from 'source-list-map';
+import { async } from 'q';
+import { StickyDirection } from '@angular/cdk/table';
 @Component({
   selector: 'app-new-list',
   templateUrl: './new-list.component.html',
@@ -30,16 +32,14 @@ export class NewListComponent implements OnInit {
       window.localStorage.setItem('currentList', JSON.stringify(this.einkaufsliste));
     }
   }
-  onEnter(value: string): Observable<EinkaufsList> {
+  onEnter(value: string)  {
     if(value ||  value !== "" ){
-
     let amount = parseInt(value.replace(/\D+/g, ''), 10);
     if (!amount) {
       amount = 1;
     }
-    this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((oberKat) => {
-      console.log(amount);
-      if (this.einkaufsliste.einkaufsItemDTOList.filter((data) => data.produktDTO.id === oberKat.id).length !== 0) {
+     this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((oberKat) => {
+     if (this.einkaufsliste.einkaufsItemDTOList.filter((data) => data.produktDTO.id === oberKat.id).length !== 0) {
         this.einkaufsliste.einkaufsItemDTOList.map((data) => {
           if (data.produktDTO.id === oberKat.id) {
             data.amount = amount + data.amount;
@@ -50,9 +50,9 @@ export class NewListComponent implements OnInit {
       }
       window.localStorage.setItem('currentList', JSON.stringify(this.einkaufsliste));
       this.table.renderRows();
+
     });
   }
-  return of(this.einkaufsliste);
   }
   clear(){
    window.localStorage.clear();
