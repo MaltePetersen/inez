@@ -25,25 +25,25 @@
 
   <table mat-table [dataSource]="purchaseListDTO.purchaseItemDTOList"> 
         <!-- Name Column -->
-        <ng-container matColumnDef="oberkat">
+        <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Produkt </th>
-          <td mat-cell *matCellDef="let element"> {{element.produktDTO.oberKat}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.produktDTO.name}} </td>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="stdMenge">
+        <ng-container matColumnDef="defaultMeasurement">
           <th mat-header-cell *matHeaderCellDef> Menge </th>
-          <td mat-cell *matCellDef="let element">  {{ element.produktDTO.stdMenge * element.amount}}</td>
+          <td mat-cell *matCellDef="let element">  {{ element.produktDTO.defaultMeasurement * element.amount}}</td>
         </ng-container>
-        <ng-container matColumnDef="einheit">
-            <th mat-header-cell *matHeaderCellDef> Einheit </th>
-            <td mat-cell *matCellDef="let element"> {{element.produktDTO.einheit}} </td>
+        <ng-container matColumnDef="unit">
+            <th mat-header-cell *matHeaderCellDef> unit </th>
+            <td mat-cell *matCellDef="let element"> {{element.produktDTO.unit}} </td>
           </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="beispiel">
           <th mat-header-cell *matHeaderCellDef> Beispiel </th>
-          <td mat-cell *matCellDef="let element"> {{element.produktDTO.beispielProd}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.produktDTO.example}} </td>
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

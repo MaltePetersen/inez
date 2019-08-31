@@ -10,7 +10,7 @@ import { MatTable } from '@angular/material';
   styleUrls: ['./new-list.component.scss']
 })
 export class NewListComponent implements OnInit {
-  displayedColumns: string[] = ['oberkat', 'stdMenge', 'einheit', 'beispiel'];
+  displayedColumns: string[] = ['name', 'defaultMeasurement', 'unit', 'beispiel'];
   purchaseListDTO: PurchaseListDTO = new PurchaseListDTO(null, new Array<PurchaseItemDTOList>());
   safeForm: any;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -37,16 +37,16 @@ export class NewListComponent implements OnInit {
       if (!amount) {
         amount = 1;
       }
-      this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((oberKat) => {
-        if (this.purchaseListDTO.purchaseItemDTOList.filter((data) => data.produktDTO.id === oberKat.id).length !== 0) {
+      this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((name) => {
+        if (this.purchaseListDTO.purchaseItemDTOList.filter((data) => data.produktDTO.id === name.id).length !== 0) {
           this.purchaseListDTO.purchaseItemDTOList.map((data) => {
-            if (data.produktDTO.id === oberKat.id) {
+            if (data.produktDTO.id === name.id) {
               data.amount = amount + data.amount;
             }
           });
         } else {
           this.purchaseListDTO
-            .purchaseItemDTOList.push(new PurchaseItemDTOList(oberKat, amount));
+            .purchaseItemDTOList.push(new PurchaseItemDTOList(name, amount));
         }
         window.localStorage.setItem('currentList', JSON.stringify(this.purchaseListDTO
         ));

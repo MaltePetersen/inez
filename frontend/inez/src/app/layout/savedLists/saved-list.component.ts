@@ -16,7 +16,7 @@ export class SavedListComponent implements OnInit {
           email: '',
         });
       }
-      displayedColumns: string[] = ['oberkat', 'stdMenge', 'einheit', 'beispiel'];
+      displayedColumns: string[] = ['name', 'defaultMeasurement', 'unit', 'beispiel'];
       purchaseListDTO: PurchaseListDTO = new PurchaseListDTO(null, new Array<PurchaseItemDTOList>());
       checkoutForm;
       listsEmail: Array<PurchaseListDTO>;
@@ -38,15 +38,15 @@ export class SavedListComponent implements OnInit {
         if(!amount){
         amount = 1;
         }
-        this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((oberKat) => {
+        this.http.get<ProduktDTO>(environment.apiUrl + '/api/word/' + value).subscribe((name) => {
         console.log(amount);
-        if(this.purchaseListDTO.purchaseItemDTOList.filter((data) => data.produktDTO.id === oberKat.id).length !== 0){
+        if(this.purchaseListDTO.purchaseItemDTOList.filter((data) => data.produktDTO.id === name.id).length !== 0){
           this.purchaseListDTO.purchaseItemDTOList.map((data) => {
-            if(data.produktDTO.id === oberKat.id){
+            if(data.produktDTO.id === name.id){
               data.amount = amount + data.amount;
           }});
         } else {
-          this.purchaseListDTO.purchaseItemDTOList.push(new PurchaseItemDTOList(oberKat, amount));
+          this.purchaseListDTO.purchaseItemDTOList.push(new PurchaseItemDTOList(name, amount));
         }
           this.table.renderRows();
         });

@@ -1,17 +1,17 @@
 export interface ProduktDTO {
     id: number;
-    oberKat: string;
-    einheit: string;
-    stdMenge: number;
-    beispielProd: string;
+    name: string;
+    unit: string;
+    defaultMeasurement: number;
+    example: string;
 }
 export class ProduktDTO {
     id: number;
-    oberKat: string;
-    einheit: string;
-    stdMenge: number;
-    beispielProd: string;
-    constructor(id: number, oberkat: string, einheit: string, stdMenge: number, beispielProd: string) {
+    name: string;
+    unit: string;
+    defaultMeasurement: number;
+    example: string;
+    constructor(id: number, name: string, unit: string, defaultMeasurement: number, example: string) {
 
     }
 }
