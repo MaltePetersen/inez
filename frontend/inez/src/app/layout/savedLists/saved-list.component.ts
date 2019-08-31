@@ -16,7 +16,7 @@ export class SavedListComponent implements OnInit {
           email: '',
         });
       }
-      displayedColumns: string[] = ['name', 'defaultMeasurement', 'unit', 'beispiel'];
+      displayedColumns: string[] = ['name', 'defaultAmount', 'unit', 'beispiel'];
       purchaseListDTO: PurchaseListDTO = new PurchaseListDTO(null, new Array<PurchaseItemDTOList>());
       checkoutForm;
       listsEmail: Array<PurchaseListDTO>;

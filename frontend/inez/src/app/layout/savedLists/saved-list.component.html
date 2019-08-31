@@ -26,9 +26,9 @@ Lade alle Einkaufslisten    </label>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="defaultMeasurement">
+        <ng-container matColumnDef="defaultAmount">
           <th mat-header-cell *matHeaderCellDef> Menge </th>
-          <td mat-cell *matCellDef="let element">  {{element.amount * element.produktDTO.defaultMeasurement}}</td>
+          <td mat-cell *matCellDef="let element">  {{element.amount * element.produktDTO.defaultAmount}}</td>
         </ng-container>
         <ng-container matColumnDef="unit">
             <th mat-header-cell *matHeaderCellDef> unit </th>

@@ -108,6 +108,6 @@ describe('NewListComponent', () => {
         component.clear();
         component.onEnter('Karotten');
         await new Promise(resolve => setTimeout(resolve, 500));
-        expect(component.purchaseListDTO.purchaseItemDTOList.filter((item) => item.produktDTO.defaultMeasurement && item.produktDTO.defaultMeasurement !== 0 && item.amount === 1).length).toBe(1);
+        expect(component.purchaseListDTO.purchaseItemDTOList.filter((item) => item.produktDTO.defaultAmount && item.produktDTO.defaultAmount !== 0 && item.amount === 1).length).toBe(1);
     });
 })

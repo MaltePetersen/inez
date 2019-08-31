@@ -2,17 +2,22 @@ export interface ProduktDTO {
     id: number;
     name: string;
     unit: string;
-    defaultMeasurement: number;
+    defaultAmount: number;
     example: string;
 }
 export class ProduktDTO {
     id: number;
     name: string;
     unit: string;
-    defaultMeasurement: number;
+    defaultAmount: number;
     example: string;
-    constructor(id: number, name: string, unit: string, defaultMeasurement: number, example: string) {
-
+    constructor(id: number, name: string, unit: string, defaultAmount: number, example: string) {
+        this.id = id; 
+        this.name = name; 
+        this.defaultAmount = defaultAmount; 
+        this.example = example; 
+        this.unit = unit; 
+        
     }
 }
 

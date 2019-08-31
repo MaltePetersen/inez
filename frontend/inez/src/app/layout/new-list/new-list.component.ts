@@ -10,7 +10,7 @@ import { MatTable } from '@angular/material';
   styleUrls: ['./new-list.component.scss']
 })
 export class NewListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'defaultMeasurement', 'unit', 'beispiel'];
+  displayedColumns: string[] = ['name', 'defaultAmount', 'unit', 'beispiel'];
   purchaseListDTO: PurchaseListDTO = new PurchaseListDTO(null, new Array<PurchaseItemDTOList>());
   safeForm: any;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -24,6 +24,7 @@ export class NewListComponent implements OnInit {
     if (window.localStorage.getItem('currentList')) {
       this.purchaseListDTO
         = JSON.parse(window.localStorage.getItem('currentList'));
+        console.log(this.purchaseListDTO); 
     } else {
       this.purchaseListDTO
         = new PurchaseListDTO(null, new Array<PurchaseItemDTOList>());
