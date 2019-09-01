@@ -1,4 +1,5 @@
-Insert into public.produkt values
+Insert into public.produkt (id, example, unit, name, default_amount) VALUES
+(324,'Iglo Erbsen und Karotten 540g', ' g', 'Karotten', 540),
 (17,'Walkers Stem Ginger Biscuits 150g',' g','Backmischpackungen',150),
 (19,'GUT&GÜNSTIG Vanillinzucker 15x8g',' g','Backzutaten',8),
 (20,'Bad Reichenhaller Jodsalz 500g',' g','Bad',500),
@@ -1571,8 +1572,14 @@ Insert into public.synonym values
 (1245,'feine Backware',64),
 (1246,'Feingebäck',64),
 (1247,'Rübe',314),
-(1248,'Wurzelgemüse',314);
+(1248,'Wurzelgemüse',314),
+(1249,'Wurzel', 324),
+(1250,'Möhren', 324),
+(1251,'Moehren', 324);
 insert into public.produkt_synonyms values
+(324,1249),
+(324,1250),
+(324,1251),
 (6,0),
 (6,1),
 (6,2),

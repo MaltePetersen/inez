@@ -2,17 +2,17 @@ package edeka.inez.inez.dto;
 
 public class ProduktDTO {
     private Long id;
-    private String oberKat;
-    private String BeispielProd;
-    private String einheit;
-    private int stdMenge;
+    private String name;
+    private String example;
+    private String unit;
+    private int defaultAmount;
 
-    public ProduktDTO(Long id, String oberKat, String beispielProd, String einheit, int stdMenge) {
+    public ProduktDTO(Long id, String name, String example, String unit, int defaultAmount) {
         this.id = id;
-        this.oberKat = oberKat;
-        BeispielProd = beispielProd;
-        this.einheit = einheit;
-        this.stdMenge = stdMenge;
+        this.name = name;
+        this.example = example;
+        this.unit = unit;
+        this.defaultAmount = defaultAmount;
     }
 
     public Long getId() {
@@ -23,35 +23,35 @@ public class ProduktDTO {
         this.id = id;
     }
 
-    public String getOberKat() {
-        return oberKat;
+    public String getName() {
+        return name;
     }
 
-    public void setOberKat(String oberKat) {
-        this.oberKat = oberKat;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBeispielProd() {
-        return BeispielProd;
+    public String getExample() {
+        return example;
     }
 
-    public void setBeispielProd(String beispielProd) {
-        BeispielProd = beispielProd;
+    public void setExample(String example) {
+        this.example = example;
     }
 
-    public String getEinheit() {
-        return einheit;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setEinheit(String einheit) {
-        this.einheit = einheit;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
-    public int getStdMenge() {
-        return stdMenge;
+    public int getDefaultAmount() {
+        return defaultAmount;
     }
 
-    public void setStdMenge(int stdMenge) {
-        this.stdMenge = stdMenge;
+    public void setDefaultAmount(int defaultAmount) {
+        this.defaultAmount = defaultAmount;
     }
 }

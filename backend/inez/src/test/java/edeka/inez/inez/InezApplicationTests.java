@@ -11,11 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class InezApplicationTests {
 
-	@Autowired
-	SpellCheckerAndSynonymFinder spellCheckerAndSynonymFinder;
 	@Test
 	public void contextLoads() {
-		System.out.println( this.spellCheckerAndSynonymFinder.findProduktWithSmallestDistance("Schoko",10).get().getOberKat());
 	}
 
 }

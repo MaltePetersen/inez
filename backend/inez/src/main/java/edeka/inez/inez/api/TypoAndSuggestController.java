@@ -6,7 +6,7 @@ import edeka.inez.inez.services.SpellCheckerAndSynonymFinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
+// Objects will always be send as DTOs
 @RestController
 @RequestMapping(path = "api/word", produces = "application/json")
 @CrossOrigin("*")
@@ -20,7 +20,7 @@ public class TypoAndSuggestController {
     @GetMapping(value = "/{word}")
     public ProduktDTO getEinkaufsliste(@PathVariable String word) {
         Optional<Produkt> produkt = this.spellCheckerAndSynonymFinder.findProduktWithSmallestDistance(word, 10);
-        return produkt.map(value -> new ProduktDTO(value.getId(), value.getOberKat(), value.getBeispielProd(), value.getEinheit(), value.getStdMenge())).orElse(null);
+        return produkt.map(value -> new ProduktDTO(value.getId(), value.getName(), value.getExample(), value.getUnit(), value.getDefaultAmount())).orElse(null);
     }
 }
 

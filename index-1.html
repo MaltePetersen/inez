@@ -1,0 +1,61 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unbekannt </title></head><body>
+<h1 id="inez">INEZ</h1>
+<p>This project is an interactive Shopping list. The project was started because of the code competion of <a href="https://www.it-talents.de" title="IT-Talents">IT-Talents</a>. <a href="https://www.it-talents.de/foerderung/code-competition/edeka-digital-code-competition-08-2019" title="The competition">The competition</a> was hosted from the IT-Talents partner <a href="https://digital.edeka" title="Edeka Digital">Edeka Digital</a>.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>You will need Maven and Node.js to install the application here are ressources to download the appropiate versions: 
+<code>Node.js Download: https://nodejs.org/en/
+Maven Download: https://maven.apache.org/download.cgi 
+Maven Install Instructions: https://maven.apache.org/install.html</code></p>
+<h3 id="installing">Installing</h3>
+<p>A step by step series of examples that tell you how to get a development env running</p>
+<p>Move in cmd to the backend folder </p>
+<p><code>cd $user/inez/backend/inez</code></p>
+<p>Run the backend with maven</p>
+<p><code>mvn spring-run:boot</code>
+Move in cmd to the frontend folder
+<code>cd $user/inez/frontend/inez</code>
+Install the depencies with node.js
+<code>npm install</code>
+Run the frontend with node.js</p>
+<p><code>npm start</code></p>
+<p>You can now open the web application in your webbrowser in <a href="localhost:4200" title="localhost:4200">localhost:4200</a></p>
+<h2 id="running-the-tests">Running the tests</h2>
+<p>You can test the requirements of the IT-Talents competition by running a test </p>
+<h3 id="unit-test">Unit test</h3>
+<p>To run a test you first have to go to the frontend folder in cmd
+<code>cd $user/inez/frontend/inez</code></p>
+<p>There you can run the test with npm 
+<code>npm test</code>
+After that a new window will open in which karma will run the tests</p>
+<h2 id="approach-to-code-competition">Approach  to Code Competition</h2>
+<p>The biggest part of the challenge im eyes was getting the data.</p>
+<h3 id="getting-the-data">Getting the Data</h3>
+<p>I used the <a href="https://www.edekanord-shop.de/hoof" title="Edeka Nord">Edeka Nord</a> website to webscrape the producttypes, example, units, defaultAmount. After that I used the <a href="https://www.openthesaurus.de/synonyme/ search?q=test&amp;format=application/json" title="Opentheasurus Api">Opentheasurus Api</a> to get the sysnonyms for eacht product. The results of that are put into the db through the data.sql file in the ressources in the backend</p>
+<h3 id="the-application">The application</h3>
+<p>The backend is written in java with Spring boot. While developing I ran a PostGreSql database but in the finished backend I am using a h2 in-memory-db2 to ensure that the installing of the application is as easy as possible. Nethertheless in production a PostGreSQL database would be the better choice. I have still commented the old code to deploy it via PostGre so if you want to change that just go to the pom.xml and application.properties and do so. 
+The frontend is written with javascript in Angular. I used a template for the basic design which is free to use under MIT License. 
+I added an extra feature to the applcation: It does not only know the unit of a product but also the normal amount which is in a package. So to say Rum is normally sold in 700 ml bottles. If you type in "1 Rum" the application will show: 
+<code>Rum 700 ml $example</code>
+If you type in "2 Rum" it will show: 
+<code>Rum 1400 ml $example</code>
+So the amount is multiplied with defaultAmount of the product.
+I also made it possibe to save the data. I used a mail as the key because I wanted to write an email service which would the user their shopping list aswell but in the end I did not have the time to do so.
+Still if you save a list in "/new-list" you can open it via "saved-lists" if you type in the mail adress you used. </p>
+<h2 id="built-with">Built With</h2>
+<ul>
+<li><a href="https://nodejs.org/en/">Node.js</a> - Dependecy Management Frontend </li>
+<li><a href="https://maven.apache.org/">Maven</a> - Dependency Management Backend</li>
+</ul>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Malte Petersen</strong> -  <a href="https://github.com/MaltePetersen">MaltePetersen</a></li>
+</ul>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE.md</a> file for details</p>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<ul>
+<li>Special thanks to the Project SB-Admin-BS4-Angular-8 for their great angular layout</li>
+</ul>
+</body></html>

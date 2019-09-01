@@ -5,7 +5,7 @@
 
 <form class=" form-align"  [formGroup]="checkoutForm" (ngSubmit)="load(checkoutForm.value); checkoutForm.reset()">
       <label for="email">
-Lade alle Einkaufslisten    </label>
+Lade alle bisherigen Einkaufslisten mit deiner Email   </label>
     <input id="email" type="text" formControlName="email">
     <button type="submit"  class="btn ml-1 btn-default">Load</button>
 
